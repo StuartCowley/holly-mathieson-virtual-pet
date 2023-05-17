@@ -14,7 +14,8 @@ describe("constructor", () => {
 
 	test("pets get older and hungrier when they grow up", () => {
 		const george = new Pet("George");
-		expect(george.growUp()).toEqual(1) &&
+		george.growUp();
+		expect(george.age).toEqual(1) &&
 			expect(george.hunger).toEqual(5) &&
 			expect(george.fitness).toEqual(7);
 	});
@@ -59,6 +60,13 @@ describe("constructor", () => {
 		expect(bob.checkUp()).toEqual("I feel great!");
 	});
 
+	it("throws an error if the pet is not alive", () => {
+		const pet = new Pet("Fido");
+		pet.age = 30;
+
+		expect(() => pet.feed()).toThrow("Your pet is no longer alive :(");
+	});
+
 	test("check whether pet is alive", () => {
 		const margot = new Pet("Margot");
 		const rudolf = new Pet("Rudolf");
@@ -71,9 +79,9 @@ describe("constructor", () => {
 		mikhail.fitness = 0;
 
 		expect(margot.isAlive).toBe(true);
-		expect(anna.isAlive).toThrow("Your pet is no longer alive :(");
-		expect(rudolf.isAlive).toThrow("Your pet is no longer alive :(");
-		expect(mikhail.isAlive).toThrow("Your pet is no longer alive :(");
+		expect(anna.isAlive).toBe(false);
+		expect(rudolf.isAlive).toBe(false);
+		expect(mikhail.isAlive).toBe(false);
 	});
 
 	test("dead pets throw error messages", () => {
