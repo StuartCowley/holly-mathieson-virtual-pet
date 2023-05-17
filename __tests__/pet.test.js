@@ -71,8 +71,28 @@ describe("constructor", () => {
 		mikhail.fitness = 0;
 
 		expect(margot.isAlive).toBe(true);
-		expect(anna.isAlive).toBe(false);
-		expect(rudolf.isAlive).toBe(false);
-		expect(mikhail.isAlive).toBe(false);
+		expect(anna.isAlive).toThrow("Your pet is no longer alive :(");
+		expect(rudolf.isAlive).toThrow("Your pet is no longer alive :(");
+		expect(mikhail.isAlive).toThrow("Your pet is no longer alive :(");
+	});
+
+	test("dead pets throw error messages", () => {
+		const bandit = new Pet("Bandit");
+		bandit.hunger = 11;
+
+		const mabel = new Pet("Mabel");
+		mabel.age = 45;
+
+		const copper = new Pet("Copper");
+		copper.fitness = 0;
+		function deadPet() {
+			isAlive(false);
+			expect(bandit.isAlive).toThrow("Your pet is no longer alive :(");
+			expect(bandit.isAlive).toThrow(errorMessage);
+			expect(mabel.isAlive).toThrow("Your pet is no longer alive :(");
+			expect(mabel.isAlive).toThrow(errorMessage);
+			expect(copper.isAlive).toThrow("Your pet is no longer alive :(");
+			expect(copper.isAlive).toThrow(errorMessage);
+		}
 	});
 });
