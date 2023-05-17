@@ -35,4 +35,27 @@ describe("constructor", () => {
 		jeanie.hunger = 5;
 		expect(jeanie.feed()).toEqual(2);
 	});
+
+	test("pets can let us know how they are", () => {
+		const madge = new Pet("Madge");
+		madge.fitness = 3;
+		madge.hunger = 5;
+
+		const jojo = new Pet("Jojo");
+		jojo.fitness = 1;
+		jojo.hunger = 2;
+
+		const bilbo = new Pet("Bilbo");
+		bilbo.fitness = 7;
+		bilbo.hunger = 8;
+
+		const bob = new Pet("Bob");
+		bob.fitness = 9;
+		bob.hunger = 3;
+
+		expect(madge.checkUp()).toEqual("I am hungry AND I need a walk");
+		expect(jojo.checkUp()).toEqual("I need a walk");
+		expect(bilbo.checkUp()).toEqual("I am hungry");
+		expect(bob.checkUp()).toEqual("I feel great!");
+	});
 });
