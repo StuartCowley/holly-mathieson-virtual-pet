@@ -103,4 +103,17 @@ describe("constructor", () => {
 			expect(copper.isAlive).toThrow(errorMessage);
 		}
 	});
+
+	test("pets can have babies", () => {
+		const jean = new Pet("Jean");
+		jean.haveBaby("Bean");
+
+		const max = new Pet("Max");
+		max.haveBaby("Jax");
+		max.haveBaby("Fax");
+		max.haveBaby("Lax");
+
+		expect(jean.children).toHaveLength(1);
+		expect(max.children).toHaveLength(3);
+	});
 });

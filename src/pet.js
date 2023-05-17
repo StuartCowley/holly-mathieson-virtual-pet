@@ -6,6 +6,7 @@ class Pet {
 		this.age = 0;
 		this.hunger = 0;
 		this.fitness = maxFitness;
+		this.children = [];
 	}
 	get isAlive() {
 		return this.age < 30 && this.hunger < 10 && this.fitness > 0;
@@ -55,6 +56,12 @@ class Pet {
 		} else {
 			return "I feel great!";
 		}
+	}
+
+	haveBaby(name) {
+		const baby = new Pet(name);
+		this.children.push(baby);
+		return this.children;
 	}
 }
 
