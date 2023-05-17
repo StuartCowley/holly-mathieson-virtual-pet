@@ -7,6 +7,9 @@ class Pet {
 		this.hunger = 0;
 		this.fitness = maxFitness;
 	}
+	get isAlive() {
+		return this.age < 30 && this.hunger < 10 && this.fitness > 0;
+	}
 	growUp() {
 		return (this.age += 1);
 		return (this.hunger += 5);

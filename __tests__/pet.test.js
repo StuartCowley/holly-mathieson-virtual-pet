@@ -58,4 +58,21 @@ describe("constructor", () => {
 		expect(bilbo.checkUp()).toEqual("I am hungry");
 		expect(bob.checkUp()).toEqual("I feel great!");
 	});
+
+	test("check whether pet is alive", () => {
+		const margot = new Pet("Margot");
+		const rudolf = new Pet("Rudolf");
+		rudolf.age = 31;
+
+		const anna = new Pet("Anna");
+		anna.hunger = 11;
+
+		const mikhail = new Pet("Mikhail");
+		mikhail.fitness = 0;
+
+		expect(margot.isAlive).toBe(true);
+		expect(anna.isAlive).toBe(false);
+		expect(rudolf.isAlive).toBe(false);
+		expect(mikhail.isAlive).toBe(false);
+	});
 });
